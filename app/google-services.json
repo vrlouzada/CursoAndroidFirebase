@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "574159356312",
+    "firebase_url": "https://cursoandroidfirebase-f0bb0.firebaseio.com",
+    "project_id": "cursoandroidfirebase-f0bb0",
+    "storage_bucket": "cursoandroidfirebase-f0bb0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574159356312:android:91d9a320eb53c085",
+        "android_client_info": {
+          "package_name": "br.com.vrlsistemas.cursoandroidfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574159356312-p4kdif5rc91t5r1uv5lpfs3jfeuar2vd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.vrlsistemas.cursoandroidfirebase",
+            "certificate_hash": "8dfb3a96e75853ddb9134d9b35b4abbf4f3c95ef"
+          }
+        },
+        {
+          "client_id": "574159356312-mvuvuddliqc6lrci9irhalhv9msm2fd8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAv76JKIAYzVRtk5mTIi9IGJ6VU3cdbp4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574159356312-mvuvuddliqc6lrci9irhalhv9msm2fd8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

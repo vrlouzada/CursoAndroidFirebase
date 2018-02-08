@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cadastro_usuario"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    tools:context="br.com.vrlsistemas.cursoandroidfirebase.Activity.CadastroUsuario">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CADASTRO DE USUÁRIO"
+        android:textSize="25sp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/edtCadEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/edtCadSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Senha"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/edtCadSenha2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Repita a senha"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/edtCadNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome"
+        android:inputType="text"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rbAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Administrador"/>
+
+        <RadioButton
+            android:id="@+id/rbAtend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atendente"/>
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar"/>
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancelar"/>
+
+</LinearLayout>
