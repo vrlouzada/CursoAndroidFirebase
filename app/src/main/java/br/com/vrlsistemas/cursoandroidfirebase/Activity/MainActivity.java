@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import br.com.vrlsistemas.cursoandroidfirebase.Classes.Usuario;
 import br.com.vrlsistemas.cursoandroidfirebase.DAO.ConfiguracaoFirebase;
@@ -35,28 +36,39 @@ public class MainActivity extends AppCompatActivity {
         edtSenha = (EditText)findViewById(R.id.edtSenha);
         btnLogin = (Button)findViewById(R.id.btnLogin);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        //Verifica se o usuário já está logado
+        if(usuarioLogado())
+        {
+            Intent intentMinhaConta = new Intent(MainActivity.this, PrincipalActivity.class);
+            abrirNovaActivity(intentMinhaConta);
 
-                if(!edtEmail.getText().toString().equals("") && !edtSenha.getText().toString().equals("")){
+        }
+        else
+        {
+            btnLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                    usuario = new Usuario();
-                    usuario.setEmail(edtEmail.getText().toString());
-                    usuario.setSenha(edtSenha.getText().toString());
+                    if(!edtEmail.getText().toString().equals("") && !edtSenha.getText().toString().equals("")){
 
-                    validarLogin();
+                        usuario = new Usuario();
+                        usuario.setEmail(edtEmail.getText().toString());
+                        usuario.setSenha(edtSenha.getText().toString());
+
+                        validarLogin();
 
 
-                }else{
-                    Toast.makeText(MainActivity.this, "Preencha os campos de E-mail e Senha", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(MainActivity.this, "Preencha os campos de E-mail e Senha", Toast.LENGTH_LONG).show();
+                    }
                 }
+            });
 
-            }
-        });
+        }
 
     }
 
+    //Valida se o email e senha está cadastrado no Firebase
     private void validarLogin(){
         autenticacao = ConfiguracaoFirebase.getFirebaseAuth();
         autenticacao.signInWithEmailAndPassword(usuario.getEmail().toString(), usuario.getSenha().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -64,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
 
-                    abrirTelaAdministrador();
+                    abrirTelaPrincipal();
                     Toast.makeText(MainActivity.this, "Login efetuado com sucesso", Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(MainActivity.this, "Usuario ou senha inválidos! Tente novamente.", Toast.LENGTH_LONG).show();
@@ -73,9 +85,27 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void abrirTelaAdministrador(){
-        Intent it = new Intent(MainActivity.this, CadastroUsuario.class);
-        startActivity(it);
+    //Abre a tela de Casdatro de Usuário
+    private void abrirTelaPrincipal(){
+        Intent intentPrincipalActivity = new Intent(MainActivity.this, PrincipalActivity.class);
+        abrirNovaActivity(intentPrincipalActivity);
+    }
+
+    //Verifica se o usuário já esta logado no sistema
+    public Boolean usuarioLogado(){
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null){
+            return true;
+        }else{
+            return  false;
+        }
+    }
+
+    //Método generic para iniciar nova activity
+    public void abrirNovaActivity(Intent intent){
+        startActivity(intent);
     }
 
 
