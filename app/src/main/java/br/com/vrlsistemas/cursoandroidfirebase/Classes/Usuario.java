@@ -28,7 +28,7 @@ public class Usuario {
     public String getSenha() {
         return senha;
     }
-    
+
     @Exclude
     public void setSenha(String senha) {
         this.senha = senha;

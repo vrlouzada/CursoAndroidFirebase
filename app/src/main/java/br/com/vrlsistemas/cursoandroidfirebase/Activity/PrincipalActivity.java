@@ -5,22 +5,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import br.com.vrlsistemas.cursoandroidfirebase.Classes.Usuario;
 import br.com.vrlsistemas.cursoandroidfirebase.R;
 
 public class PrincipalActivity extends AppCompatActivity {
 
     private FirebaseAuth autenticacao;
+    private DatabaseReference referenciaFirebase;
+    private TextView tipoUsuario;
+    private Usuario usuario;
+    private String tipoUsuarioEmail;
+
+    private Menu menu1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
+        tipoUsuario = (TextView)findViewById(R.id.txtTipoUsuario);
+
         //Recupera a instância do Firebase
         autenticacao = FirebaseAuth.getInstance();
+        referenciaFirebase = FirebaseDatabase.getInstance().getReference();
+
 
     }
 
@@ -28,6 +45,41 @@ public class PrincipalActivity extends AppCompatActivity {
     //Adicionando o menu criado na Activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        menu.clear();
+
+        this.menu1 = menu;
+
+        //Recebedo o e-mail do usuário logado no momento
+        String email = autenticacao.getCurrentUser().getEmail().toString();
+
+
+        referenciaFirebase.child("usuarios").orderByChild("email").equalTo(email.toString()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                    tipoUsuarioEmail = postSnapshot.child("tipoUsuario").getValue().toString();
+
+                    tipoUsuario.setText(tipoUsuarioEmail.toString());
+
+                    menu1.clear();
+
+                    if (tipoUsuarioEmail.equals("Administrador")){
+                        getMenuInflater().inflate(R.menu.menu_admin, menu1);
+                    }else if (tipoUsuarioEmail.equals("Atendente")){
+                        getMenuInflater().inflate(R.menu.menu_atend, menu1);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         getMenuInflater().inflate(R.menu.menu_admin, menu);
         return true;
     }
@@ -41,6 +93,8 @@ public class PrincipalActivity extends AppCompatActivity {
         if(id == R.id.action_add_usuario){
             abrirTelaCadastroUsuario();
         } else if (id == R.id.action_sair_admin) {
+            deslogarUsuario();
+        }else if (id == R.id.action_sair_atend) {
             deslogarUsuario();
         }
 
