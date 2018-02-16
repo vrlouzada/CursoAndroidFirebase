@@ -1,8 +1,10 @@
 package br.com.vrlsistemas.cursoandroidfirebase.Activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.preference.Preference;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private FirebaseAuth autenticacao;
-    private EditText edtEmail, edtSenha;
-    private Button btnLogin;
+    private BootstrapEditText edtEmail, edtSenha;
+    private BootstrapButton btnLogin;
     private Usuario usuario;
 
     @Override
@@ -34,9 +38,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        edtEmail = (EditText)findViewById(R.id.edtEmail);
-        edtSenha = (EditText)findViewById(R.id.edtSenha);
-        btnLogin = (Button)findViewById(R.id.btnLogin);
+        edtEmail = (BootstrapEditText)findViewById(R.id.edtEmail);
+        edtSenha = (BootstrapEditText)findViewById(R.id.edtSenha);
+        btnLogin = (BootstrapButton)findViewById(R.id.btnLogin);
+
+        //Solicita as permissões para acesso completo do sistema
+        permission();
 
         //Verifica se o usuário já está logado
         if(usuarioLogado())
@@ -118,4 +125,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void permission(){
+        int PERMISSION_ALL = 1;
+
+        String[] PERMISSION = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+        ActivityCompat.requestPermissions(this, PERMISSION, PERMISSION_ALL);
+    }
 }

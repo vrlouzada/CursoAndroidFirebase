@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,9 +29,9 @@ import br.com.vrlsistemas.cursoandroidfirebase.R;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
 
-    private EditText email, senha1, senha2, nome;
+    private BootstrapEditText email, senha1, senha2, nome;
     private RadioButton rbAdmin, rbAtend;
-    private Button btnCadastrar, btnCancelar;
+    private BootstrapButton btnCadastrar, btnCancelar;
 
     private FirebaseAuth autenticacao;
     private FirebaseDatabase database;
@@ -43,16 +45,16 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_usuario);
 
-        email = (EditText)findViewById(R.id.edtCadEmail);
-        senha1 = (EditText)findViewById(R.id.edtCadSenha);
-        senha2 = (EditText)findViewById(R.id.edtCadSenha2);
-        nome = (EditText)findViewById(R.id.edtCadNome);
+        email = (BootstrapEditText)findViewById(R.id.edtCadEmail);
+        senha1 = (BootstrapEditText)findViewById(R.id.edtCadSenha);
+        senha2 = (BootstrapEditText)findViewById(R.id.edtCadSenha2);
+        nome = (BootstrapEditText)findViewById(R.id.edtCadNome);
 
         rbAdmin = (RadioButton) findViewById(R.id.rbAdmin);
         rbAtend = (RadioButton)findViewById(R.id.rbAtend);
 
-        btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
-        btnCancelar = (Button) findViewById(R.id.btnCancelar);
+        btnCadastrar = (BootstrapButton) findViewById(R.id.btnCadastrar);
+        btnCancelar = (BootstrapButton) findViewById(R.id.btnCancelar);
 
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {

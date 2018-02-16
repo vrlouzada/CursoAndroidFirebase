@@ -26,10 +26,24 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.google.firebase:firebase-core:11.8.0'
+
+    //Para poder usar as funções de autenticação do firebase
     compile 'com.google.firebase:firebase-auth:11.8.0'
+
+    //Para poder utilizar o banco de dados
     compile 'com.google.firebase:firebase-database:11.8.0'
+
+    //Para poder utilizar o armazenamento de arquivos
     compile 'com.google.firebase:firebase-storage:11.8.0'
+
+    //Picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //Bootstrap
+    compile 'com.beardedhen:androidbootstrap:2.3.2'
+
     testCompile 'junit:junit:4.12'
+
+
 }
 apply plugin: 'com.google.gms.google-services'

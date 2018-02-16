@@ -1,11 +1,13 @@
 package br.com.vrlsistemas.cursoandroidfirebase.Activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,7 +35,7 @@ import br.com.vrlsistemas.cursoandroidfirebase.R;
 public class UploadFotoActivity extends AppCompatActivity {
 
 
-    private Button btnUpload, btnCancelar;
+    private BootstrapButton btnUpload, btnCancelar;
     private ImageView  imageView;
 
     private StorageReference storageReference;
@@ -63,8 +66,8 @@ public class UploadFotoActivity extends AppCompatActivity {
             }
         });
 
-        btnUpload = (Button) findViewById(R.id.btnUpload);
-        btnCancelar = (Button) findViewById(R.id.btnCancelar);
+        btnUpload = (BootstrapButton) findViewById(R.id.btnUpload);
+        btnCancelar = (BootstrapButton) findViewById(R.id.btnCancelar);
 
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,10 +112,10 @@ public class UploadFotoActivity extends AppCompatActivity {
         final int heigth = 300;
         final int width = 300;
 
-        if(requestCode == Activity.RESULT_OK) {
+        if(resultCode == Activity.RESULT_OK) {
             if (requestCode == 123) {
                 Uri imageSelecionada = data.getData();
-                Picasso.with(UploadFotoActivity.this).load(imageSelecionada.toString()).resize(width, heigth).centerCrop().into(imageView);
+                Picasso.with(UploadFotoActivity.this).load(imageSelecionada.toString()).resize(400, 400).centerCrop().into(imageView);
             }
         }
     }
@@ -136,8 +139,6 @@ public class UploadFotoActivity extends AppCompatActivity {
 
             }
         });
-
-        //DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-
     }
+
 }
