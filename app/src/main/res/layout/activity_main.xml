@@ -9,69 +9,82 @@
     android:background="@drawable/background"
     tools:context="br.com.vrlsistemas.cursoandroidfirebase.Activity.MainActivity">
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="16dp"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
-       <ImageView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:src="@drawable/login"
-           />
-
-
-
-        <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:id="@+id/edtEmail"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="Email"
-            android:textColor="#000"
-            android:textColorHint="@color/colorHint"
-            app:bootstrapSize="xl"
-            app:bootstrapBrand="info"
-            app:roundedCorners="true"
-            android:layout_marginTop="10dp"
-            />
+            android:orientation="vertical"
+            android:layout_margin="16dp"
+            android:gravity="center">
 
-        <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:id="@+id/edtSenha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="Senha"
-            android:textColor="#000"
-            android:textColorHint="@color/colorHint"
-            app:bootstrapSize="xl"
-            app:bootstrapBrand="info"
-            app:roundedCorners="true"
-            android:layout_marginTop="10dp"
-            />
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/login"
+               />
 
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LOGIN"
-            android:background="#61380B"
-            android:textColor="#fff"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            app:bootstrapBrand="success"
-            app:bootstrapSize="xl"
-            app:buttonMode="regular"
-            app:showOutline="false"
-            app:roundedCorners="true"
-            />
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:textColor="#000"
+                android:textColorHint="@color/colorHint"
+                app:bootstrapSize="xl"
+                app:bootstrapBrand="info"
+                app:roundedCorners="true"
+                android:layout_marginTop="10dp"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/edtSenha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="Senha"
+                android:textColor="#000"
+                android:textColorHint="@color/colorHint"
+                app:bootstrapSize="xl"
+                app:bootstrapBrand="info"
+                app:roundedCorners="true"
+                android:layout_marginTop="10dp"
+                />
 
 
-    </LinearLayout>
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LOGIN"
+                android:background="#61380B"
+                android:textColor="#fff"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                app:bootstrapBrand="success"
+                app:bootstrapSize="xl"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                app:roundedCorners="true"
+                />
+
+            <TextView
+                android:id="@+id/txtAbreCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Não tem cadastro? Clique aqui!"
+                android:gravity="center"
+                android:textColor="#000"
+                android:textSize="15dp"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 

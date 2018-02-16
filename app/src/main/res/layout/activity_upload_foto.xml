@@ -24,9 +24,10 @@
 
             <ImageView
                 android:id="@+id/imageCadFotoPerfil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:src="@drawable/fotoperfil"/>
 
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -58,7 +59,6 @@
 
         </LinearLayout>
     </ScrollView>
-
 
 
 </LinearLayout>

@@ -2,32 +2,91 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_cadastro_usuario"
+    android:id="@+id/activity_cadastro_usuario_comum"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:background="@drawable/background"
-    tools:context="br.com.vrlsistemas.cursoandroidfirebase.Activity.CadastroUsuarioActivity">
+    android:gravity="center"
+    tools:context="br.com.vrlsistemas.cursoandroidfirebase.Activity.CadastroUsuarioComumActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="16dp">
+            >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CADASTRO DE USUÁRIO"
+                android:text="CADASTRO"
                 android:textSize="25sp"
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textColor="#000"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/edtCadNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome"
+                android:inputType="textCapWords"
+                android:textColor="#000"
+                android:textColorHint="@color/colorHint"
+                app:bootstrapSize="xl"
+                app:bootstrapBrand="info"
+                app:roundedCorners="true"
+                android:layout_marginTop="10dp"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/edtCadCPF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CPF"
+                android:inputType="textCapWords"
+                android:textColor="#000"
+                android:textColorHint="@color/colorHint"
+                app:bootstrapSize="xl"
+                app:bootstrapBrand="info"
+                app:roundedCorners="true"
+                android:layout_marginTop="10dp"
+                />
+
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/edtCadRua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rua"
+                android:inputType="textCapWords"
+                android:textColor="#000"
+                android:textColorHint="@color/colorHint"
+                app:bootstrapSize="xl"
+                app:bootstrapBrand="info"
+                app:roundedCorners="true"
+                android:layout_marginTop="10dp"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/edtCadNumero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número"
+                android:inputType="textCapWords"
+                android:textColor="#000"
+                android:textColorHint="@color/colorHint"
+                app:bootstrapSize="xl"
+                app:bootstrapBrand="info"
+                app:roundedCorners="true"
+                android:layout_marginTop="10dp"
+                />
+
 
 
             <com.beardedhen.androidbootstrap.BootstrapEditText
@@ -73,19 +132,7 @@
                 android:layout_marginTop="10dp"
                 />
 
-            <com.beardedhen.androidbootstrap.BootstrapEditText
-                android:id="@+id/edtCadNome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nome"
-                android:inputType="textCapWords"
-                android:textColor="#000"
-                android:textColorHint="@color/colorHint"
-                app:bootstrapSize="xl"
-                app:bootstrapBrand="info"
-                app:roundedCorners="true"
-                android:layout_marginTop="10dp"
-                />
+
 
 
             <RadioGroup
@@ -93,19 +140,19 @@
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/rbAdmin"
+                    android:id="@+id/rbFeminino"
                     android:checked="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Administrador"
+                    android:text="Feminino"
                     android:textColor="#000"
                     android:textColorHint="#000"/>
 
                 <RadioButton
-                    android:id="@+id/rbAtend"
+                    android:id="@+id/rbMasculino"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Atendente"
+                    android:text="Masculino"
                     android:textColor="#000"
                     android:textColorHint="#000"/>
 

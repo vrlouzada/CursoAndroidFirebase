@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private BootstrapEditText edtEmail, edtSenha;
     private BootstrapButton btnLogin;
     private Usuario usuario;
+    private TextView txtAbreCadastro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         edtEmail = (BootstrapEditText)findViewById(R.id.edtEmail);
         edtSenha = (BootstrapEditText)findViewById(R.id.edtSenha);
         btnLogin = (BootstrapButton)findViewById(R.id.btnLogin);
+        txtAbreCadastro = (TextView)findViewById(R.id.txtAbreCadastro);
 
         //Solicita as permissões para acesso completo do sistema
         permission();
@@ -74,6 +77,16 @@ public class MainActivity extends AppCompatActivity {
             });
 
         }
+
+        txtAbreCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CadastroUsuarioComumActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
 
     }
 

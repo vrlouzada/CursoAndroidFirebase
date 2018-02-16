@@ -15,6 +15,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -102,6 +103,8 @@ public class UploadFotoActivity extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Uri dowloadUrl = taskSnapshot.getDownloadUrl();
                 carregaImagempadrao();
+                Toast.makeText(UploadFotoActivity.this, "Foto adicionada com sucesso", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
 
@@ -123,7 +126,7 @@ public class UploadFotoActivity extends AppCompatActivity {
     private void carregaImagempadrao(){
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
-        final StorageReference storageReference = storage.getReferenceFromUrl("gs://cursoandroidfirebase-f0bb0.appspot.com/fotoPerfil.png");
+        final StorageReference storageReference = storage.getReferenceFromUrl("gs://cursoandroidfirebase-f0bb0.appspot.com/fotoPerfilUsuario/" + emailUsuarioLogado + ".jpg");
 
         final int heigth = 300;
         final int width = 300;
