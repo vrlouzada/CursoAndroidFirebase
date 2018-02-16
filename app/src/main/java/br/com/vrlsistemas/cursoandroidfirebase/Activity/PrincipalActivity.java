@@ -53,7 +53,6 @@ public class PrincipalActivity extends AppCompatActivity {
         //Recebedo o e-mail do usuário logado no momento
         String email = autenticacao.getCurrentUser().getEmail().toString();
 
-
         referenciaFirebase.child("usuarios").orderByChild("email").equalTo(email.toString()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -71,7 +70,6 @@ public class PrincipalActivity extends AppCompatActivity {
                         getMenuInflater().inflate(R.menu.menu_atend, menu1);
                     }
                 }
-
             }
 
             @Override
@@ -96,6 +94,8 @@ public class PrincipalActivity extends AppCompatActivity {
             deslogarUsuario();
         }else if (id == R.id.action_sair_atend) {
             deslogarUsuario();
+        } else if (id == R.id.action_cad_perfil_atend){
+            uploadFotoPerfil();
         }
 
         return super.onOptionsItemSelected(item);
@@ -113,5 +113,11 @@ public class PrincipalActivity extends AppCompatActivity {
         Intent intent = new Intent(PrincipalActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void uploadFotoPerfil(){
+        Intent intent = new Intent(PrincipalActivity.this, UploadFotoActivity.class);
+        finish();
+        startActivity(intent);
     }
 }

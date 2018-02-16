@@ -8,7 +8,7 @@ import android.preference.Preference;
  * Created by vlouzada on 15/02/2018.
  */
 
-public class Prefrencias {
+public class Preferencias {
 
     private Context context;
     private SharedPreferences preferences;
@@ -16,12 +16,13 @@ public class Prefrencias {
     private int MODE = 0;
     private SharedPreferences.Editor editor;
 
-    private final String EMAIl_USUARIO_LOGADO = "email)usuario_logado";
+    private final String EMAIl_USUARIO_LOGADO = "email_usuario_logado";
     private final String SENHA_USUARIO_LOGADO = "senha_usuario_logado";
 
 
-    private Prefrencias(Context contextParametro){
+    public Preferencias(Context contextParametro){
         context = contextParametro;
+        preferences = context.getSharedPreferences(NOME_ARQUIVO, MODE);
 
         //associar o nosso preferences.edit()
         editor = preferences.edit();

@@ -1,5 +1,6 @@
 package br.com.vrlsistemas.cursoandroidfirebase.Activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import br.com.vrlsistemas.cursoandroidfirebase.Classes.Usuario;
 import br.com.vrlsistemas.cursoandroidfirebase.DAO.ConfiguracaoFirebase;
+import br.com.vrlsistemas.cursoandroidfirebase.Helper.Preferencias;
 import br.com.vrlsistemas.cursoandroidfirebase.R;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
@@ -94,6 +96,15 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     //Inserindo usuário no database do Firebase
                     insereUsuario(usuario);
 
+                    finish();
+
+                    //Deslogar ao adicionar o usuário
+                    autenticacao.signOut();
+
+                    //Para abrir a nossa tela principal após a reautenticação
+                    abreTelaPrincipal();
+
+
                 }else{
                     String erroExcecao = "";
 
@@ -132,6 +143,31 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             e.printStackTrace();
             return false;
         }
+    }
+
+    private void abreTelaPrincipal(){
+
+        autenticacao = ConfiguracaoFirebase.getFirebaseAuth();
+
+        Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
+
+        autenticacao.signInWithEmailAndPassword(preferencias.getEmailUsuarioLogado(), preferencias.getSenhaUsuarioLogado()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful()){
+                    Intent intent = new Intent(CadastroUsuarioActivity.this, PrincipalActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(CadastroUsuarioActivity.this, "Falha!", Toast.LENGTH_LONG).show();
+                    autenticacao.signOut();
+                    Intent intent = new Intent(CadastroUsuarioActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+
+            }
+        });
     }
 
 }

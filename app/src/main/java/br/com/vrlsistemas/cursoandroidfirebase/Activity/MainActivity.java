@@ -1,6 +1,7 @@
 package br.com.vrlsistemas.cursoandroidfirebase.Activity;
 
 import android.content.Intent;
+import android.preference.Preference;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import br.com.vrlsistemas.cursoandroidfirebase.Classes.Usuario;
 import br.com.vrlsistemas.cursoandroidfirebase.DAO.ConfiguracaoFirebase;
+import br.com.vrlsistemas.cursoandroidfirebase.Helper.Preferencias;
 import br.com.vrlsistemas.cursoandroidfirebase.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -76,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
 
+                    Preferencias preferencias = new Preferencias(MainActivity.this);
+                    preferencias.salvarUsuarioPreferencias(usuario.getEmail(), usuario.getSenha());
+
+
                     abrirTelaPrincipal();
                     Toast.makeText(MainActivity.this, "Login efetuado com sucesso", Toast.LENGTH_LONG).show();
                 }else{
@@ -87,7 +93,10 @@ public class MainActivity extends AppCompatActivity {
 
     //Abre a tela de Casdatro de Usuário
     private void abrirTelaPrincipal(){
+
+
         Intent intentPrincipalActivity = new Intent(MainActivity.this, PrincipalActivity.class);
+        finish();
         abrirNovaActivity(intentPrincipalActivity);
     }
 
