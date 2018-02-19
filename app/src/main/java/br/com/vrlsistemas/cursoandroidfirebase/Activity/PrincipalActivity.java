@@ -68,6 +68,8 @@ public class PrincipalActivity extends AppCompatActivity {
                         getMenuInflater().inflate(R.menu.menu_admin, menu1);
                     }else if (tipoUsuarioEmail.equals("Atendente")){
                         getMenuInflater().inflate(R.menu.menu_atend, menu1);
+                    }else if (tipoUsuarioEmail.equals("Comum")){
+                        getMenuInflater().inflate(R.menu.menu_atend, menu1);
                     }
                 }
             }
@@ -96,10 +98,19 @@ public class PrincipalActivity extends AppCompatActivity {
             deslogarUsuario();
         } else if (id == R.id.action_cad_perfil_atend){
             uploadFotoPerfil();
+        }else if(id == R.id.action_cardapio){
+            abrirTelaCardapio();
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    //Método para abertura da tela ed cadastro de usuário
+    private void abrirTelaCardapio(){
+        Intent intent = new Intent(PrincipalActivity.this, CardapioActivity.class);
+        startActivity(intent);
+    }
+
 
     //Método para abertura da tela ed cadastro de usuário
     private void abrirTelaCadastroUsuario(){

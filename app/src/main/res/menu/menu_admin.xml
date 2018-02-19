@@ -10,6 +10,12 @@
         app:showAsAction="collapseActionView"/>
 
     <item
+        android:id="@+id/action_cardapio"
+        android:orderInCategory="100"
+        android:title="Cardapio"
+        app:showAsAction="collapseActionView"/>
+
+    <item
         android:id="@+id/action_sair_admin"
         android:orderInCategory="1000"
         android:title="Desconectar"
